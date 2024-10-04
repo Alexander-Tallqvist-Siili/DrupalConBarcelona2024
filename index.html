@@ -1,0 +1,830 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left-width: 0.25em; border-left-style: solid; border-left-color: rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+
+@include-when-export url(https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
+
+/* =========== */
+
+/* pt-serif-regular - latin */
+/* pt-serif-italic - latin */
+/* pt-serif-700 - latin */
+/* pt-serif-700italic - latin */
+:root {
+	--active-file-bg-color: #dadada;
+	--active-file-bg-color: rgba(32, 43, 51, 0.63);
+	--active-file-text-color: white;
+	--bg-color: #f3f2ee;
+	--text-color: #1f0909;
+	--control-text-color: #444;
+	--rawblock-edit-panel-bd: #e5e5e5;
+
+	--select-text-bg-color: rgba(32, 43, 51, 0.63);
+  --select-text-font-color: white;
+}
+
+pre {
+	--select-text-bg-color: #36284e;
+	--select-text-font-color: #fff;
+}
+
+html {
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+}
+
+html, body {
+	background-color: #f3f2ee;
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+	color: #1f0909;
+	line-height: 1.5em;
+}
+
+/*#write {
+	overflow-x: auto;
+    max-width: initial;
+	padding-left: calc(50% - 17em);
+    padding-right: calc(50% - 17em);
+}
+
+@media (max-width: 36em) {
+ 	#write {
+ 		padding-left: 1em;
+    	padding-right: 1em;
+ 	}
+}*/
+
+#write {
+	max-width: 40em;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+			max-width: 914px;
+	}
+}
+
+ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+ul li {
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* styles */
+
+/* ====== */
+
+/* headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold;
+}
+h1 {
+	font-size: 1.875em;
+	/*30 / 16*/
+	line-height: 1.6em;
+	/* 48 / 30*/
+	margin-top: 2em;
+}
+h2,
+h3 {
+	font-size: 1.3125em;
+	/*21 / 16*/
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
+}
+h3 {
+	font-weight: normal;
+}
+h4 {
+	font-size: 1.125em;
+	/*18 / 16*/
+	margin-top: 2.67em;
+	/*48 / 18*/
+}
+h5,
+h6 {
+	font-size: 1em;
+	/*16*/
+}
+h1 {
+	border-bottom: 1px solid;
+	margin-bottom: 1.875em;
+	padding-bottom: 0.8125em;
+}
+/* links */
+
+a {
+	text-decoration: none;
+	color: #065588;
+}
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+/* block spacing */
+
+p,
+blockquote,
+.md-fences {
+	margin-bottom: 1.5em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 1.5em;
+}
+/* blockquote */
+
+blockquote {
+	font-style: italic;
+	border-left: 5px solid;
+	margin-left: 2em;
+	padding-left: 1em;
+}
+/* lists */
+
+ul,
+ol {
+	margin: 0 0 1.5em 1.5em;
+}
+/* tables */
+.md-meta,.md-before, .md-after {
+	color:#999;
+}
+
+table {
+	margin-bottom: 1.5em;
+	/*24 / 16*/
+	font-size: 1em;
+	/* width: 100%; */
+}
+thead th,
+tfoot th {
+	padding: .25em .25em .25em .4em;
+	text-transform: uppercase;
+}
+th {
+	text-align: left;
+}
+td {
+	vertical-align: top;
+	padding: .25em .25em .25em .4em;
+}
+
+code,
+.md-fences {
+	background-color: #dadada;
+}
+
+code {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.md-fences {
+	margin-left: 2em;
+	margin-bottom: 3em;
+	padding-left: 1ch;
+	padding-right: 1ch;
+}
+
+pre,
+code,
+tt {
+	font-size: .875em;
+	line-height: 1.714285em;
+}
+/* some fixes */
+
+h1 {
+	line-height: 1.3em;
+	font-weight: normal;
+	margin-bottom: 0.5em;
+}
+
+p + ul,
+p + ol{
+	margin-top: .5em;
+}
+
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol {
+	margin-top: .5em;
+}
+
+li > ul,
+li > ol {
+	margin-top: inherit;
+	margin-bottom: 0;
+}
+
+li ol>li {
+	list-style-type: lower-alpha;
+}
+
+li li ol>li{
+	list-style-type: lower-roman;
+}
+
+h2,
+h3 {
+	margin-bottom: .75em;
+}
+hr {
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-left: none;
+}
+h1 {
+	border-color: #c5c5c5;
+}
+blockquote {
+	border-color: #bababa;
+	color: #656565;
+}
+
+blockquote ul,
+blockquote ol {
+	margin-left:0;
+}
+
+.ty-table-edit {
+	background-color: transparent;
+}
+thead {
+	background-color: #dadada;
+}
+tr:nth-child(even) {
+	background: #e8e7e7;
+}
+hr {
+	border-color: #c5c5c5;
+}
+.task-list{
+	padding-left: 1rem;
+}
+
+.md-task-list-item {
+	padding-left: 1.5rem;
+	list-style-type: none;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.25rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #F3F2EE;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
+}
+
+#write pre.md-meta-block {
+	min-height: 1.875rem;
+	color: #555;
+	border: 0px;
+	background: transparent;
+	margin-top: -4px;
+	margin-left: 1em;
+	margin-top: 1em;
+}
+
+.md-image>.md-meta {
+	color: #9B5146;
+}
+
+.md-image>.md-meta{
+	font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+}
+
+
+#write>h3.md-focus:before{
+	left: -1.5rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h4.md-focus:before{
+	left: -1.5rem;
+	top: .25rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h5.md-focus:before{
+	left: -1.5rem;
+	top: .0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h6.md-focus:before{
+	left: -1.5rem;
+	top: 0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+.md-toc-content:empty:before{
+	color: #065588;
+}
+.md-toc-item {
+	color: #065588;
+}
+#write div.md-toc-tooltip {
+	background-color: #f3f2ee;
+}
+
+#typora-sidebar {
+	background-color: #f3f2ee;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+}
+
+.pin-outline #typora-sidebar {
+	background: inherit;
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+.pin-outline #typora-sidebar:hover .outline-title-wrapper {
+	border-left:1px dashed;
+}
+
+.outline-item:hover {
+  background-color: #dadada;
+  border-left: 28px solid #dadada;
+  border-right: 18px solid #dadada;
+}
+
+.typora-node .outline-item:hover {
+  	border-right: 28px solid #dadada;
+}
+
+.outline-expander:before {
+  content: "\f0da";
+  font-family: FontAwesome;
+  font-size:14px;
+  top: 1px;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  content: "\f0d7";
+}
+
+.modal-content {
+	background-color: #f3f2ee;
+}
+
+.auto-suggest-container ul li {
+	list-style-type: none;
+}
+
+/** UI for electron */
+
+.megamenu-menu,
+#top-titlebar, #top-titlebar *,
+.megamenu-content {
+	background: #f3f2ee;
+	color: #1f0909;
+}
+
+.megamenu-menu-header {
+	border-bottom: 1px dashed #202B33;
+}
+
+.megamenu-menu {
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+header, .context-menu, .megamenu-content, footer {
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+    color: #1f0909;
+}
+
+#megamenu-back-btn {
+	color: #1f0909;
+	border-color: #1f0909;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color: #1f0909;
+}
+
+.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+	color: inherit;
+	background-color: #e8e7df;
+}
+
+.long-btn:hover {
+	background-color: #e8e7df;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: inherit;
+}
+
+.megamenu-menu-panel .btn {
+	background-color: #D2D1D1;
+}
+
+.btn-default {
+	background-color: transparent;
+}
+
+.typora-sourceview-on #toggle-sourceview-btn,
+.ty-show-word-count #footer-word-count {
+	background: #c7c5c5;
+}
+
+#typora-quick-open {
+    background-color: inherit;
+}
+
+.md-diagram-panel {
+	margin-top: 8px;
+}
+
+.file-list-item-file-name {
+	font-weight: initial;
+}
+
+.file-list-item-summary {
+	opacity: 1;
+}
+
+.file-list-item {
+	color: #777;
+}
+
+.file-list-item.active {
+	background-color: inherit;
+	color: black;
+}
+
+.ty-side-sort-btn.active {
+	background-color: inherit;
+}
+
+.file-list-item.active .file-list-item-file-name  {
+	font-weight: bold;
+}
+
+.file-list-item{
+    opacity:1 !important;
+}
+
+.file-library-node.active>.file-node-background{
+	background-color: rgba(32, 43, 51, 0.63);
+	background-color: var(--active-file-bg-color);
+}
+
+.file-tree-node.active>.file-node-content{
+	color: white;
+	color: var(--active-file-text-color);
+}
+
+.md-task-list-item>input {
+	margin-left: -1.7em;
+	margin-top: calc(1rem - 12px);
+	-webkit-appearance: button;
+}
+
+input {
+	border: 1px solid #aaa;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover, 
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+	opacity: 1;
+}
+
+/* https://github.com/typora/typora-issues/issues/2046 */
+.os-windows-7 strong,
+.os-windows-7 strong  {
+	font-weight: 760;
+}
+
+.ty-preferences .btn-default {
+	background: transparent;
+}
+
+.ty-preferences .window-header {
+	border-bottom: 1px dashed #202B33;
+	box-shadow: none;
+}
+
+#sidebar-loading-template, #sidebar-loading-template.file-list-item {
+	color: #777;
+}
+
+.searchpanel-search-option-btn.active {
+	background: #777;
+	color: white;
+}
+
+.export-detail, .light .export-detail, 
+.light .export-item.active, 
+.light .export-items-list-control {
+	background: #e0e0e0;
+	border-radius: 2px;
+	font-weight: 700;
+	color: inherit
+}
+
+@media print {
+	hr {
+		page-break-after: always /* CSS 2 */;
+		break-after: page /* CSS 3+ */;
+		height: 0.1em; visibility: hidden /* make the horizontal line invisible but still affect layout*/;
+	}
+}
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>DrupalCon_Barcelona_2024 _Key_takeaways</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='driesnote-drupalcon-barcelona-2024'><span>Driesnote: DrupalCon Barcelona 2024</span></h1><p><span>This keynote covered the progress of the </span><strong><span>Starshot Initiative</span></strong><span>, now officially known as </span><strong><span>Drupal CMS</span></strong><span>, which is focused on making </span><strong><span>Drupal more accessible</span></strong><span> for non-developers, such as content creators and marketers, while retaining its flexibility for developers. The session detailed the project’s goals, milestones, and the roadmap leading up to the first major release.</span></p><p><span>A major focus is the integration of </span><strong><span>AI-powered features</span></strong><span>, allowing users to perform tasks using </span><strong><span>natural language commands</span></strong><span>. </span><strong><span>AI agents</span></strong><span> help with operations like </span><strong><span>managing content types</span></strong><span>, </span><strong><span>configuring fields</span></strong><span>, and </span><strong><span>migrating content</span></strong><span>, making Drupal easier for non-technical users.</span></p><p><img src="./images/tour.png" referrerpolicy="no-referrer" alt="tour"><em><span>Driesnote: AI assisted Drupal</span></em></p><p>&nbsp;</p><p><img src="./images/dries.png" referrerpolicy="no-referrer" alt="dries"><em><span>Driesnote: Progress of Drupal CMS.</span></em></p><h3 id='key-takeaways'><span>Key takeaways:</span></h3><ul><li><p><strong><span>Drupal CMS for non-developers</span></strong><span>: Aimed at empowering non-technical users, Drupal CMS is optimized for those who want to build and manage sites without requiring developer assistance, focusing on no-code and low-code workflows.</span></p></li><li><p><strong><span>AI-powered features</span></strong><span>: AI agents now assist with tasks like renaming content types, adding fields, and even content migration. This makes Drupal easier to use by allowing users to interact in natural language, improving accessibility for non-technical users.</span></p></li><li><p><strong><span>Phase 1 release</span></strong><span>: The official launch of Drupal CMS 1.0 is set for January 15, 2025, coinciding with Drupal&#39;s 24th birthday. Phase 2 will expand features like the Experience Builder and deepen AI integration.</span></p></li><li><p><strong><span>Collaboration</span></strong><span>: Over 14 recipes are in development, offering reusable solutions that combine modules, configurations, and best practices to streamline site building. </span></p></li></ul><h3 id='link-to-video'><span>Link to video:</span></h3><p><a href='https://www.youtube.com/watch?v=nhPiL4g972A&amp;list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&amp;index=5' target='_blank' class='url'>https://www.youtube.com/watch?v=nhPiL4g972A&list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&index=5</a></p><h1 id='experience-builder-initiative'><span>Experience Builder Initiative</span></h1><p><span>This session covered Drupal&#39;s upcoming </span><strong><span>Experience Builder</span></strong><span>, a tool designed to </span><strong><span>simplify content creation and design</span></strong><span>, targeting both </span><strong><span>non-technical users</span></strong><span> and </span><strong><span>developers</span></strong><span>. The tool aims to </span><strong><span>reduce the complexity</span></strong><span> and </span><strong><span>cost of creating and maintaining Drupal sites</span></strong><span> by providing a </span><strong><span>low-code interface</span></strong><span> for building pages, components, and templates. The focus is on making Drupal more </span><strong><span>user-friendly</span></strong><span> and </span><strong><span>competitive with other platforms</span></strong><span> by improving the experience for </span><strong><span>content creators</span></strong><span>, </span><strong><span>developers</span></strong><span>, and </span><strong><span>designers</span></strong><span>.</span></p><p><img src="./images/experience_builder_demo.png" referrerpolicy="no-referrer" alt="experience_builder_demo"><em><span>Demo of Experience Builder.</span></em></p><p><img src="./images/expb_timeline.png" referrerpolicy="no-referrer" alt="expb_timeline"><em><span>Experience Builder timeline.</span></em></p><h3 id='key-takeaways-2'><span>Key takeaways:</span></h3><ol start='' ><li><p><strong><span>Simplified content creation</span></strong><span>: Experience Builder provides a low-code interface for building and editing pages without heavy developer involvement.</span></p></li><li><p><strong><span>Component-based design</span></strong><span>: Users can create reusable components and templates, improving efficiency and design consistency.</span></p></li><li><p><strong><span>User-focused design</span></strong><span>: The tool supports content creators, developers, and designers, making site management more accessible to non-technical users.</span></p></li><li><p><strong><span>Cost and complexity reduction</span></strong><span>: Experience Builder addresses issues like high development costs and Drupal’s perceived complexity, making it more competitive.</span></p></li><li><p><strong><span>Planned release dates</span></strong><span>: Stable release Q3 2025, and final release Q4 2025.</span></p></li></ol><h3 id='link-to-video-2'><span>Link to video:</span></h3><p><a href='https://www.youtube.com/watch?v=hYP-YEbJI-E&amp;list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&amp;index=56' target='_blank' class='url'>https://www.youtube.com/watch?v=hYP-YEbJI-E&list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&index=56</a></p><h3 id='mentioned-modules'><span>Mentioned modules:</span></h3><ul><li><p><span>Experience Builder: </span><a href='https://www.drupal.org/project/experience_builder' target='_blank' class='url'>https://www.drupal.org/project/experience_builder</a></p></li><li><p><span>Single Directory Components: </span><a href='https://www.drupal.org/docs/develop/theming-drupal/using-single-directory-components' target='_blank' class='url'>https://www.drupal.org/docs/develop/theming-drupal/using-single-directory-components</a></p></li></ul><h1 id='ai-with-drupal---using-llm-technology-is-easy-but-how-do-you-actually-build-useful-applications'><span>AI with Drupal - Using LLM technology is easy, but how do you actually build useful applications?</span></h1><p><span>This session provided a clear breakdown of how </span><strong><span>large language models (LLMs)</span></strong><span> like </span><strong><span>OpenAI’s GPT</span></strong><span> can be integrated into </span><strong><span>Drupal</span></strong><span> to create practical, </span><strong><span>AI-driven applications</span></strong><span>. It focused on </span><strong><span>simplifying AI</span></strong><span> by explaining that these models are essentially </span><strong><span>advanced text generators</span></strong><span>, not intelligent beings. The session covered how </span><strong><span>AI can be used effectively</span></strong><span> for tasks like </span><strong><span>content generation</span></strong><span>, </span><strong><span>answering queries</span></strong><span>, and </span><strong><span>personalizing user experiences</span></strong><span>. It also discussed practical considerations such as </span><strong><span>cost optimization</span></strong><span>, </span><strong><span>dynamic data retrieval</span></strong><span>, and how to build on top of </span><strong><span>pre-trained AI models</span></strong><span> instead of creating your own.</span></p><p><img src="./images/can_ai_help.png" referrerpolicy="no-referrer" alt="can_ai_help"><em><span>&quot;Identifying useful applications&quot;</span></em></p><h3 id='key-takeaways-3'><span>Key takeaways:</span></h3><ol start='' ><li><p><strong><span>AI is a predictive tool, not a thinker</span></strong><span>: Large language models generate text based on statistical patterns in data, making them effective for generating relevant responses, but not truly intelligent.</span></p></li><li><p><strong><span>No need to train your own model</span></strong><span>: Training an AI model from scratch is expensive and unnecessary for most cases. Instead, leverage existing models like GPT and build on top of them.</span></p></li><li><p><strong><span>Embeddings for semantic search</span></strong><span>: Embeddings (vector representations of text) allow for more accurate semantic search by enabling the system to find related content even when exact keywords aren&#39;t used. This is done by converting text into vectors and calculating their similarity.</span></p></li><li><p><strong><span>Dynamic data input (RAG)</span></strong><span>: Use Retrieval Augmented Generation (RAG) to dynamically pull in relevant data in real-time, improving efficiency and reducing token costs.</span></p></li><li><p><strong><span>Cost and performance optimization</span></strong><span>: Reducing token usage by limiting the amount of data sent to the model and using smaller models for simpler tasks is key to controlling costs.</span></p></li></ol><h3 id='link-to-video-3'><span>Link to video:</span></h3><p><a href='https://www.youtube.com/watch?v=wrAWjMiJrXo&amp;list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&amp;index=82' target='_blank' class='url'>https://www.youtube.com/watch?v=wrAWjMiJrXo&list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&index=82</a></p><h3 id='mentioned-modules-2'><span>Mentioned modules:</span></h3><ul><li><p><span>AI (Artificial Intelligence): </span><a href='https://www.drupal.org/project/ai' target='_blank' class='url'>https://www.drupal.org/project/ai</a></p></li></ul><h1 id='drupal-ai-once-again-leading-the-way-with-the-new-golden-era-of-the-web'><span>Drupal AI: Once again leading the way with the new golden era of the web</span></h1><p><span>This session explored the </span><strong><span>Drupal AI module</span></strong><span>, explaining its </span><strong><span>origins</span></strong><span>, </span><strong><span>current functionality</span></strong><span>, and </span><strong><span>future direction</span></strong><span>. The module was created to address the growing </span><strong><span>fragmentation of AI tools</span></strong><span> within the Drupal community. Various standalone AI modules existed, but there was no </span><strong><span>unified approach</span></strong><span>. The team behind this project aimed to bring </span><strong><span>AI integration into a single, cohesive module</span></strong><span> that could serve as the backbone for </span><strong><span>AI-driven workflows in Drupal</span></strong><span>, offering developers more streamlined and consistent solutions.</span></p><p><span>At present, the module leverages </span><strong><span>AI agents</span></strong><span> to handle tasks such as </span><strong><span>automating content creation</span></strong><span>, </span><strong><span>building Webforms</span></strong><span>, and </span><strong><span>improving search functionality</span></strong><span> through </span><strong><span>semantic embeddings</span></strong><span>. One of its strengths is the </span><strong><span>abstraction layer</span></strong><span>, which allows users to </span><strong><span>seamlessly integrate different AI providers</span></strong><span>, such as </span><strong><span>OpenAI</span></strong><span> or </span><strong><span>AWS Bedrock</span></strong><span>, giving developers </span><strong><span>flexibility in choosing the best tools</span></strong><span> for their needs. The goal is to make </span><strong><span>AI a central part of Drupal&#39;s future</span></strong><span>, helping developers </span><strong><span>automate complex processes</span></strong><span> and </span><strong><span>reduce manual tasks</span></strong><span>.</span></p><p><img src="./images/agents.png" referrerpolicy="no-referrer"><em><span>Demo of AI agents in Drupal</span></em></p><h3 id='key-takeaways-4'><span>Key takeaways:</span></h3><ul><li><p><strong><span>Unifying AI efforts in Drupal</span></strong><span>: The module was created to consolidate the fragmented AI tools in the Drupal ecosystem into a single, cohesive system.</span></p></li><li><p><strong><span>AI agents for automation</span></strong><span>: AI agents can automate tasks such as content creation, form building, and smart search, reducing manual workloads for developers.</span></p></li><li><p><strong><span>Flexible integration with AI providers</span></strong><span>: The abstraction layer allows seamless switching between AI providers, including OpenAI and AWS Bedrock, offering flexibility for developers.</span></p></li><li><p><strong><span>Expanding future capabilities</span></strong><span>: Plans to develop more advanced features, such as content migration, AI-powered e-commerce, and complex workflow automation, making AI an integral part of Drupal’s evolution.</span></p></li></ul><h3 id='link-to-video-4'><span>Link to video:</span></h3><p><a href='https://www.youtube.com/watch?v=C7kZsemZJDo&amp;list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&amp;index=60' target='_blank' class='url'>https://www.youtube.com/watch?v=C7kZsemZJDo&list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&index=60</a></p><h3 id='mentioned-modules-3'><span>Mentioned modules:</span></h3><ul><li><p><span>AI (Artificial Intelligence): </span><a href='https://www.drupal.org/project/ai' target='_blank' class='url'>https://www.drupal.org/project/ai</a></p></li><li><p><span>AI agents: </span><a href='https://www.drupal.org/project/ai_agents' target='_blank' class='url'>https://www.drupal.org/project/ai_agents</a></p></li></ul><h3 id='other-links'><span>Other links</span></h3><ul><li><p><span>AI agent setup by OSTraining: </span><a href='https://www.youtube.com/watch?v=4S-HBFVE2lU' target='_blank' class='url'>https://www.youtube.com/watch?v=4S-HBFVE2lU</a></p></li><li><p><span>AI agent setup by FreelyGive: </span><a href='https://www.youtube.com/watch?v=hptyElqmo6Q' target='_blank' class='url'>https://www.youtube.com/watch?v=hptyElqmo6Q</a></p></li></ul><h1 id='single-directory-components---a-new-web-of-possibilities'><span>Single Directory Components - A new web of possibilities</span></h1><p><span>This session introduced </span><strong><span>Single Directory Components (SDC)</span></strong><span>, a new feature in </span><strong><span>Drupal 10.1</span></strong><span> that allows developers to bundle all files related to a </span><strong><span>UI component</span></strong><span> (template, CSS, JavaScript) into a </span><strong><span>single directory</span></strong><span>. This </span><strong><span>modular approach</span></strong><span> simplifies development, enhances </span><strong><span>reusability</span></strong><span>, and makes components easier to manage. </span><strong><span>SDC</span></strong><span> also promotes better </span><strong><span>separation of concerns</span></strong><span>, making testing and collaboration more efficient.</span></p><p><img src="./images/sdc.png" referrerpolicy="no-referrer" alt="sdc"><em><span>SDC example.</span></em></p><h3 id='key-takeaways-5'><span>Key takeaways:</span></h3><ul><li><p><strong><span>Bundled components for easy management</span></strong><span>: SDC allows developers to package all related files (templates, CSS, JavaScript) in one directory, streamlining both development and maintenance.</span></p></li><li><p><strong><span>Improved reusability and modularity</span></strong><span>: SDC supports a modular approach, making it easy to reuse components across multiple projects, reducing the need to rebuild similar elements.</span></p></li><li><p><strong><span>Separation of concerns</span></strong><span>: By isolating components, SDC simplifies testing, as each component is self-contained and does not depend on other parts of the system.</span></p></li><li><p><strong><span>Collaboration-friendly</span></strong><span>: The self-contained nature of components makes collaboration easier among teams, as each component can be developed and tested in isolation.</span></p></li></ul><h3 id='mentioned-modules-4'><span>Mentioned modules:</span></h3><ul><li><p><span>SDC Story Generator: </span><a href='https://www.drupal.org/project/sdc_story_generator' target='_blank' class='url'>https://www.drupal.org/project/sdc_story_generator</a></p></li><li><p><span>SDC Examples: </span><a href='https://www.drupal.org/project/sdc_examples' target='_blank' class='url'>https://www.drupal.org/project/sdc_examples</a></p></li><li><p><span>SDC Block: </span><a href='https://www.drupal.org/project/sdc_block' target='_blank' class='url'>https://www.drupal.org/project/sdc_block</a></p></li><li><p><span>UI Patterns: </span><a href='https://www.drupal.org/project/ui_patterns' target='_blank' class='url'>https://www.drupal.org/project/ui_patterns</a></p></li><li><p><span>Radix theme: </span><a href='https://www.drupal.org/project/radix' target='_blank' class='url'>https://www.drupal.org/project/radix</a></p></li></ul><h3 id='other-links-2'><span>Other links</span></h3><ul><li><p><span>Single Directory Components: </span><a href='https://www.drupal.org/docs/develop/theming-drupal/using-single-directory-components' target='_blank' class='url'>https://www.drupal.org/docs/develop/theming-drupal/using-single-directory-components</a></p></li><li><p><span>ShadCN UI: </span><a href='https://ui.shadcn.com/' target='_blank' class='url'>https://ui.shadcn.com/</a></p></li><li><p><span>V0.dev Chat: </span><a href='https://v0.dev/chat' target='_blank' class='url'>https://v0.dev/chat</a></p></li></ul><h1 id='drupal-recipes-initiative-update'><span>Drupal Recipes Initiative Update</span></h1><p><span>This session introduced the </span><strong><span>Recipes initiative</span></strong><span> in </span><strong><span>Drupal</span></strong><span>, a new approach to applying </span><strong><span>reusable configurations</span></strong><span> that address the limitations of traditional </span><strong><span>install profiles</span></strong><span> and </span><strong><span>distributions</span></strong><span>. Recipes allow developers to apply and share configurations without locking users into rigid systems. The session covered the progress of the initiative, including the completion of </span><strong><span>Phase 1</span></strong><span>, which has integrated recipes as an </span><strong><span>experimental API</span></strong><span> in </span><strong><span>Drupal core</span></strong><span>, and the upcoming goals for </span><strong><span>Phase 2</span></strong><span>, which will further enhance the flexibility and power of this system.</span></p><p><img src="./images/anatomy_recipe.png" referrerpolicy="no-referrer" alt="anatomy_recipe"><em><span>Anatomy of a recipe.</span></em></p><p><img src="./images/recipe.png" referrerpolicy="no-referrer" alt="recipe"><em><span>Recipe structure.</span></em></p><h3 id='key-takeaways-6'><span>Key takeaways:</span></h3><ul><li><p><strong><span>Modular configuration</span></strong><span>: Recipes allow site builders to mix and match configurations, which are stored as YAML files, offering flexibility in how features are added or removed from sites. Recipes can include module installations, configuration actions, and even content.</span></p></li><li><p><strong><span>Broader integration plans</span></strong><span>: Future improvements will see more Drupal profiles, like the Standard and Umami profiles, converted to recipes. This shift will provide a more flexible approach to setting up Drupal sites, allowing site builders to choose features more dynamically.</span></p></li><li><p><strong><span>Phase 1 completion</span></strong><span>: Phase 1 successfully introduced Recipes as an experimental API in Drupal 10.3 and will continue in Drupal 11. It enabled developers to create reusable recipes using YAML files. The core functionality includes applying configurations for modules and themes.</span></p></li><li><p><strong><span>Phase 2 goals</span></strong><span>: The next phase will focus on enhancing the Recipes API by supporting more complex workflows. This includes enabling “unpacking” recipes, so once a recipe is applied, its dependencies remain in the site even if the recipe is removed. Phase 2 will also look into better user input options, dynamic configurations, and improved UI integration with the Project Browser for easier recipe discovery and application.</span></p></li></ul><h3 id='link-to-video-5'><span>Link to video:</span></h3><p><a href='https://www.youtube.com/watch?v=623lKSpQB9U&amp;list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&amp;index=18' target='_blank' class='url'>https://www.youtube.com/watch?v=623lKSpQB9U&list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&index=18</a></p><h3 id='other-links-3'><span>Other links</span></h3><ul><li><p><span>Recipes Cookbook: </span><a href='https://www.drupal.org/docs/extending-drupal/contributed-modules/contributed-module-documentation/distributions-and-recipes-initiative/recipes-cookbook' target='_blank' class='url'>https://www.drupal.org/docs/extending-drupal/contributed-modules/contributed-module-documentation/distributions-and-recipes-initiative/recipes-cookbook</a></p></li><li><p><span>Recipes documentation on Git: </span><a href='https://git.drupalcode.org/project/distributions_recipes/-/tree/1.0.x/docs' target='_blank' class='url'>https://git.drupalcode.org/project/distributions_recipes/-/tree/1.0.x/docs</a></p></li></ul><h1 id='lazy-loading-content-for-better-performance-user-experience-and-seo'><span>Lazy Loading Content for Better Performance, User Experience, and SEO</span></h1><p><span>This session focused on the use of </span><strong><span>lazy loading</span></strong><span> and </span><strong><span>caching strategies</span></strong><span> in Drupal to improve site performance, user experience, and SEO. The talk explored how </span><strong><span>lazy builders</span></strong><span>, </span><strong><span>placeholders</span></strong><span>, and </span><strong><span>BigPipe</span></strong><span> help optimize </span><strong><span>Core Web Vitals</span></strong><span> like </span><strong><span>Largest Contentful Paint (LCP)</span></strong><span> and </span><strong><span>Cumulative Layout Shift (CLS)</span></strong><span>, which are critical for SEO and the user experience. The discussion also emphasized understanding Drupal’s caching system and managing cache invalidation effectively to maintain fast and efficient web pages.</span></p><p><img src="./images/lazy.png" referrerpolicy="no-referrer" alt="lazy"><em><span>Different caching scenarios.</span></em></p><h3 id='key-takeaways-7'><span>Key Takeaways:</span></h3><ul><li><p><strong><span>Caching challenges</span></strong><span>:</span></p><ul><li><p><span>A single cache miss can slow down the entire page, so it&#39;s important to identify and optimize weak elements.</span></p></li><li><p><span>Be mindful of cache contexts like user sessions and languages, as they can cause high cache variations (cardinality), leading to inefficiency.</span></p></li></ul></li><li><p><strong><span>Lazy builders and placeholders</span></strong><span>:</span></p><ul><li><p><strong><span>Lazy builders</span></strong><span> (</span><code>#lazy_builder</code><span>) allow rendering dynamic content later to improve performance. Use </span><code>#create_placeholder</code><span> to force placeholders for certain components to be filled in once content is ready.</span></p></li></ul></li><li><p><strong><span>Core Web Vitals</span></strong><span>:</span></p><ul><li><p><span>Avoid using placeholders for </span><strong><span>Largest Contentful Paint (LCP)</span></strong><span> elements like hero images to prevent poor loading performance.</span></p></li><li><p><span>Use </span><strong><span>placeholder previews</span></strong><span> (</span><code>#lazy_builder_preview</code><span>) to prevent </span><strong><span>Cumulative Layout Shift (CLS)</span></strong><span>.</span></p></li></ul></li><li><p><strong><span>Dynamic Page Cache and BigPipe</span></strong><span>:</span></p><ul><li><p><span>Enabling </span><strong><span>Dynamic Page Cache</span></strong><span> and </span><strong><span>BigPipe</span></strong><span> serves static content immediately, while deferring dynamic content. This is especially effective for logged-in users.</span></p></li><li><p><span>For anonymous users, </span><strong><span>BigPipe Sessionless</span></strong><span> helps optimize the first request by caching it for subsequent hits.</span></p></li></ul></li><li><p><strong><span>Cache control</span></strong><span>:</span></p><ul><li><p><span>Customize </span><code>auto_placeholder_conditions</code><span> to control caching behavior. Tools like </span><strong><span>Cache Review</span></strong><span> and </span><strong><span>Cache Metrics</span></strong><span> help track cache invalidations and optimize performance.</span></p></li></ul></li></ul><h3 id='link-to-video-6'><span>Link to video:</span></h3><p><a href='https://www.youtube.com/watch?v=FgKHi0qQKe0&amp;list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&amp;index=15' target='_blank' class='url'>https://www.youtube.com/watch?v=FgKHi0qQKe0&list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&index=15</a></p><h3 id='mentioned-modules-5'><span>Mentioned modules:</span></h3><ul><li><p><strong><span>Cache Control Override</span></strong><span>: </span><a href='https://www.drupal.org/project/cache_control_override' target='_blank' class='url'>https://www.drupal.org/project/cache_control_override</a></p></li><li><p><strong><span>Ajax BigPipe</span></strong><span>: </span><a href='https://www.drupal.org/project/ajax_big_pipe' target='_blank' class='url'>https://www.drupal.org/project/ajax_big_pipe</a></p></li><li><p><strong><span>BigPipe Sessionless</span></strong><span>: </span><a href='https://www.drupal.org/project/big_pipe_sessionless' target='_blank' class='url'>https://www.drupal.org/project/big_pipe_sessionless</a></p></li><li><p><strong><span>Cache Review</span></strong><span>: </span><a href='https://www.drupal.org/project/cache_review' target='_blank' class='url'>https://www.drupal.org/project/cache_review</a></p></li><li><p><strong><span>BigPipe Demo</span></strong><span>: </span><a href='https://www.drupal.org/project/big_pipe_demo' target='_blank' class='url'>https://www.drupal.org/project/big_pipe_demo</a></p></li><li><p><strong><span>Cache Metrics</span></strong><span>: </span><a href='https://www.drupal.org/project/cache_metrics' target='_blank' class='url'>https://www.drupal.org/project/cache_metrics</a></p></li></ul><h3 id='tips'><span>Tips</span></h3><ul><li><p><strong><span>Lazy builder</span></strong><span>: </span><code>#lazy_builder</code><span> – For delayed content rendering.</span></p></li><li><p><strong><span>Placeholder previews</span></strong><span>: </span><code>#lazy_builder_preview</code><span> – For handling placeholders without causing layout shifts.</span></p></li><li><p><strong><span>Create placeholder</span></strong><span>: </span><code>#create_placeholder</code><span> – To force the creation of placeholders for dynamic content.</span></p></li></ul><h1 id='running-a-fleet-of-websites-with-ease-on-the-localgov-drupal-microsites-platform'><span>Running a fleet of websites with ease on the LocalGov Drupal Microsites platform</span></h1><p><span>This session covered the </span><strong><span>LocalGov Drupal Microsites platform</span></strong><span>, which enables managing multiple websites through a single Drupal installation. It focused on how the platform simplifies managing microsites for councils, ensuring consistent branding, accessibility, and easy customization. </span></p><p><img src="./images/sheffield.png" referrerpolicy="no-referrer" alt="sheffield"><em><span>Sheffield City Council&#39;s main site and four (4) micro sites.</span></em></p><h3 id='key-takeaways-8'><span>Key takeaways:</span></h3><ol start='' ><li><p><strong><span>Centralized management</span></strong><span>: One Drupal installation handles multiple microsites, reducing overhead.</span></p></li><li><p><strong><span>Tailored user access</span></strong><span>: Admins and editors have specific roles, ensuring content control.</span></p></li><li><p><strong><span>Customizable design</span></strong><span>: Built-in tools make it easy to adjust themes and layouts.</span></p></li><li><p><strong><span>Extensive use cases</span></strong><span>: Suitable for councils, universities, and corporations with multiple websites.</span></p></li></ol><h3 id='link-to-video-7'><span>Link to video:</span></h3><p><a href='https://www.youtube.com/watch?v=kl51vy3_K1Q&amp;list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&amp;index=92' target='_blank' class='url'>https://www.youtube.com/watch?v=kl51vy3_K1Q&list=PLpeDXSh4nHjQOfQV-BUgoxHXlr4tHlhPO&index=92</a></p><h3 id='mentioned-modules-6'><span>Mentioned modules:</span></h3><ul><li><p><span>Group module: </span><a href='https://www.drupal.org/project/group' target='_blank' class='url'>https://www.drupal.org/project/group</a></p></li><li><p><span>Group sites module: </span><a href='https://www.drupal.org/project/group_sites' target='_blank' class='url'>https://www.drupal.org/project/group_sites</a></p></li><li><p><span>Domain access module: </span><a href='https://www.drupal.org/project/domain' target='_blank' class='url'>https://www.drupal.org/project/domain</a></p></li><li><p><span>Layout paragraphs module: </span><a href='https://www.drupal.org/project/layout_paragraphs' target='_blank' class='url'>https://www.drupal.org/project/layout_paragraphs</a></p></li></ul><h3 id='distributions-mentioned'><span>Distributions mentioned:</span></h3><ul><li><p><span>LocalGov Drupal: </span><a href='https://www.drupal.org/project/localgov' target='_blank' class='url'>https://www.drupal.org/project/localgov</a></p></li><li><p><span>LocalGov Drupal Microsites: </span><a href='https://www.drupal.org/project/localgov_microsites' target='_blank' class='url'>https://www.drupal.org/project/localgov_microsites</a></p></li></ul><h1 id='honourable-mentions'><span>Honourable mentions</span></h1><h2 id='edit-together-collaborative-editing-for-everyone'><span>Edit Together: Collaborative Editing for Everyone</span></h2><p><span>This open-source solution offers </span><strong><span>real-time editing</span></strong><span> with </span><strong><span>multiple users</span></strong><span>, </span><strong><span>threaded commenting</span></strong><span>, and integration with Drupal’s content moderation workflows.</span></p><p><img src="./images/edit.png" referrerpolicy="no-referrer" alt="edit"><em><span>Edit together tool demo.</span></em></p><h3 id='other-links-4'><span>Other links</span></h3><p><span>Edit Together by Palantir: </span><a href='https://www.palantir.net/edittogether' target='_blank' class='url'>https://www.palantir.net/edittogether</a></p></div></div>
+</body>
+</html>
